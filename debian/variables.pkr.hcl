@@ -24,6 +24,10 @@ variable "pull_version"{
 
 }
 
+variable "pull_series"{
+
+}
+
 variable "http_directory" {
   type    = string
   default = "http"
