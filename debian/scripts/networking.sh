@@ -58,6 +58,10 @@ cat > /usr/local/bin/netplan <<EOF
 EOF
 chmod 755 /usr/local/bin/netplan
 
+apt-get install cloud-init -y
+
+cp /etc/cloud/cloud.cfg /tmp/cloud.cfg
+
 
 # This is a super dirty trick to make this work. Debian's cloud-init is
 # missing MAAS bindings and this causes the installation to fail the 
@@ -66,7 +70,7 @@ chmod 755 /usr/local/bin/netplan
 # TODO: Figure a way to upstream the changes.
 
 # Bookworm LP#2011454
-if [ ${DEBIAN_VERSION} == '12' ]; then
+if [ ${PULL_VERSION} == '12' ]; then
      wget http://archive.ubuntu.com/ubuntu/pool/main/c/cloud-init/cloud-init_23.1.2-0ubuntu0~23.04.1_all.deb
      dpkg -i cloud-init_23.1.2-0ubuntu0~23.04.1_all.deb
      rm cloud-init_23.1.2-0ubuntu0~23.04.1_all.deb
@@ -76,6 +80,7 @@ else
     rm cloud-init_20.1-10-g71af48df-0ubuntu5_all.deb
 fi
 
+mv /tmp/cloud.cfg /etc/cloud/cloud.cfg
 
 # Enable the following lines if willing to use Netplan
 #echo 'ENABLED=1' > /etc/default/netplan
