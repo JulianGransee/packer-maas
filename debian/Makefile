@@ -21,8 +21,8 @@ else
 endif
 
 UPGRADE = false
-PULL_VERSION = VERSION
-PULL_SERIES = SERIES
+PULL_VERSION = $(VERSION)
+PULL_SERIES = $(BOOT)
 ifeq ($(strip $(VERSION)),12)
     ifeq ($(strip $(BOOT)),bios)
         UPGRADE = true
