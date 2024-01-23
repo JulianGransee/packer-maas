@@ -22,10 +22,12 @@ endif
 
 UPGRADE = false
 PULL_VERSION = VERSION
+PULL_SERIES = SERIES
 ifeq ($(strip $(VERSION)),12)
     ifeq ($(strip $(BOOT)),bios)
         UPGRADE = true
         PULL_VERSION=11
+        PULL_SERIES=bullseye
     endif
 endif
 
@@ -57,6 +59,7 @@ debian: check-deps clean
 		-var architecture=${ARCH} \
 		-var upgrade=${UPGRADE} \
 		-var pull_version=${PULL_VERSION} \
+		-var pull_series=${PULL_SERIES} \
 		-var boot_mode=${BOOT} .
 
 clean:
