@@ -22,7 +22,7 @@ endif
 
 UPGRADE = false
 PULL_VERSION = $(VERSION)
-PULL_SERIES = $(BOOT)
+PULL_SERIES = $(SERIES)
 ifeq ($(strip $(VERSION)),12)
     ifeq ($(strip $(BOOT)),bios)
         UPGRADE = true
