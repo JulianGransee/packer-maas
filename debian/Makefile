@@ -56,7 +56,7 @@ debian: check-deps clean
 		-var debian_version=${VERSION} \
 		-var architecture=${ARCH} \
 		-var upgrade=${UPGRADE} \
-		-var pull_version=${PULL_VERSION}
+		-var pull_version=${PULL_VERSION} \
 		-var boot_mode=${BOOT} .
 
 clean:
