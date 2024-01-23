@@ -17,7 +17,12 @@ variable "headless" {
 variable "upgrade"{
   type        = bool
   default     = false
-  description = "Whether an version update to Debian 12 should be done or not"}
+  description = "Whether an version update to Debian 12 should be done or not"
+}
+
+variable "pull_version"{
+
+}
 
 variable "http_directory" {
   type    = string

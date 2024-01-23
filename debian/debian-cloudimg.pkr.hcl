@@ -37,7 +37,7 @@ source "qemu" "cloudimg" {
   headless       = var.headless
   http_directory = var.http_directory
   iso_checksum   = "file:https://cloud.debian.org/images/cloud/${var.debian_series}/latest/SHA512SUMS"
-  iso_url        = "https://cloud.debian.org/images/cloud/${var.debian_series}/latest/debian-${var.debian_version}-generic-${var.architecture}.qcow2"
+  iso_url        = "https://cloud.debian.org/images/cloud/${var.debian_series}/latest/debian-${var.pull_version}-generic-${var.architecture}.qcow2"
   memory         = 2048
   qemu_binary    = "qemu-system-${lookup(local.qemu_arch, var.architecture, "")}"
   qemu_img_args {
