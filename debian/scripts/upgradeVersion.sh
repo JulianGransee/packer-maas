@@ -15,7 +15,7 @@ then
 
 
   #sources.list, replace bullseye to bookworm
-  sed -i 's/bullseye/bookworm/g'/etc/apt/sources.list
+  sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list
 
   #bookworm updates
   apt-get -y update
