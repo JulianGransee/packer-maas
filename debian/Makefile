@@ -20,6 +20,14 @@ else
 	VERSION = 11
 endif
 
+UPGRADE = false
+
+ifeq ($(strip $(VERSION)),12)
+    ifeq ($(strip $(BOOT)),bios)
+        UPGRADE = true
+    endif
+endif
+
 # Safeguard
 ifeq ($(strip $(ARCH)),arm64)
 	boot = uefi
@@ -46,6 +54,7 @@ debian: check-deps clean
 		-var debian_series=${SERIES} \
 		-var debian_version=${VERSION} \
 		-var architecture=${ARCH} \
+		-var upgrade=${UPGRADE} \
 		-var boot_mode=${BOOT} .
 
 clean:

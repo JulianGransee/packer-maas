@@ -14,6 +14,11 @@ variable "headless" {
   description = "Whether VNC viewer should not be launched."
 }
 
+variable "upgrade"{
+  type        = bool
+  default     = false
+  description = "Whether an version update to Debian 12 should be done or not"}
+
 variable "http_directory" {
   type    = string
   default = "http"

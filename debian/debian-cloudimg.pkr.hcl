@@ -21,6 +21,7 @@ locals {
     "https_proxy=${var.https_proxy}",
     "no_proxy=${var.https_proxy}",
   ]
+
 }
 
 source "null" "dependencies" {
@@ -109,6 +110,12 @@ build {
   provisioner "shell" {
     environment_vars = ["DEBIAN_FRONTEND=noninteractive"]
     scripts          = ["${path.root}/scripts/cleanup.sh"]
+  }
+
+  //this just runs if upgrade=true
+  provisioner "shell" {
+      environment_vars = ["DEBIAN_FRONTEND=noninteractive", "UPGRADE=${var.upgrade}", "BOOT_MODE=${var.boot_mode}"]
+      scripts          = ["${path.root}/scripts/upgradeVersion.sh"]
   }
 
   post-processor "shell-local" {
